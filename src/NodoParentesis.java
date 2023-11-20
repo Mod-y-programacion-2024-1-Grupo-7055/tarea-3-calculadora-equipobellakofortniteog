@@ -6,26 +6,26 @@
 
 
 /**
+ * Clase que representa un nodo de paréntesis en la calculadora.
+ * Extiende de NodoOperador.
  *
  * @author Alejandro Hernández Mora <alejandrohmora@ciencias.unam.mx>
- */ 
+ */
+/**
+ * Clase que representa un nodo de paréntesis en la calculadora.
+ * Extiende de NodoOperador.
+ */
 public class NodoParentesis extends NodoOperador {
 
-    /**
-     *
-     */
     public NodoParentesis() {
         super();
-        precedence = 2;
+        precedence = 3; // Precedencia más alta para los paréntesis
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public double evalua() {
-        throw new UnsupportedOperationException("No se puede evaluar un parentesis"); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("No se puede evaluar un paréntesis directamente.");
     }
-
 }
+
+

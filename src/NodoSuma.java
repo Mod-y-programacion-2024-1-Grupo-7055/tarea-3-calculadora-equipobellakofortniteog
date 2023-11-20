@@ -1,32 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 /**
+ * Clase que representa el nodo de suma en la calculadora.
+ * Extiende de NodoOperador.
  *
  * @author Alejandro Hernández Mora <alejandrohmora@ciencias.unam.mx>
  */
 public class NodoSuma extends NodoOperador {
 
     /**
+     * Constructor de NodoSuma.
      *
-     * @param izq
-     * @param der
+     * @param izq Nodo hijo izquierdo.
+     * @param der Nodo hijo derecho.
      */
     public NodoSuma(CompositeEA izq, CompositeEA der) {
         super(izq, der);
-        precedence=0;
+        precedence = 0;
     }
 
     /**
-     * La evaluación del nodo, suma la evaluación de los hijos izquierdo y derecho
-     * @return
+     * Evalúa la suma de los hijos izquierdo y derecho.
+     *
+     * @return El resultado de la suma.
+     * @throws NullPointerException Si alguno de los nodos hijos es nulo.
      */
     @Override
     public double evalua() {
+        if (izq == null || der == null) {
+            throw new NullPointerException("Uno de los nodos hijos es nulo.");
+        }
         return izq.evalua() + der.evalua();
     }
 }

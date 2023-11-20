@@ -6,33 +6,38 @@
 
 
 /**
+ * Clase que representa el nodo de división en la estructura de la calculadora.
+ * Extiende de NodoOperador.
  *
  * @author Alejandro Hernández Mora <alejandrohmora@ciencias.unam.mx>
  */
 public class NodoDivision extends NodoOperador {
 
     /**
+     * Constructor que recibe los nodos izquierdo y derecho.
      *
-     * @param izq
-     * @param der
+     * @param izq El nodo operador izquierdo.
+     * @param der El nodo operador derecho.
      */
     public NodoDivision(CompositeEA izq, CompositeEA der) {
         super(izq, der);
-        precedence=1;
+        this.precedence = 1; // Precedencia para la división
     }
 
     /**
-     * La evaluación del nodo, divide la evaluación de los hijos izquierdo y
-     * derecho.
+     * Evalúa el nodo, divide la evaluación de los hijos izquierdo y derecho.
+     * Maneja el caso de división por cero.
      *
-     * @return la división del hijo izquierdo entre el hijo derecho.
+     * @return el resultado de la división del hijo izquierdo entre el hijo derecho.
+     * @throws ArithmeticException si se intenta dividir por cero.
      */
     @Override
     public double evalua() {
-        double d = der.evalua();
-        if (Double.compare(0, d) == 0) {
-            throw new ArithmeticException("No puedes dividir entre cero");
+        double divisor = der.evalua();
+        if (Double.compare(divisor, 0) == 0) {
+            throw new ArithmeticException("División por cero no permitida.");
         }
-        return izq.evalua() / d;
+        return izq.evalua() / divisor;
     }
 }
+

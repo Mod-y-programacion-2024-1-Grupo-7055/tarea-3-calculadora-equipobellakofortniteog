@@ -6,28 +6,31 @@
 
 
 /**
+ * Clase que representa la operación de multiplicación en la calculadora.
+ * Extiende de NodoOperador.
  *
  * @author Alejandro Hernández Mora <alejandrohmora@ciencias.unam.mx>
  */
 public class NodoMultiplicacion extends NodoOperador {
 
-    /**
-     *
-     * @param izq
-     * @param der
-     */
     public NodoMultiplicacion(CompositeEA izq, CompositeEA der) {
         super(izq, der);
-        precedence=1;
+        precedence = 1; // Adecuada para la operación de multiplicación
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public double evalua() {
-        return izq.evalua() * der.evalua();
-    }
+        double izqVal = izq.evalua();
+        double derVal = der.evalua();
 
+        // Verificación adicional para manejar desbordamientos numéricos
+        double resultado = izqVal * derVal;
+        if (Double.isInfinite(resultado) || Double.isNaN(resultado)) {
+            throw new ArithmeticException("Error de cálculo: desbordamiento numérico o resultado indefinido.");
+        }
+
+        return resultado;
+    }
 }
+
+

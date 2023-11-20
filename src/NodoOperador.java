@@ -1,121 +1,96 @@
-
 /**
  * Clase abstracta que modela a los nodos que contienen operadores aritméticos
  * y paréntesis izquierdos. La clase no puede ser concreta porque la
  * evaluación de cada nodo depende del operador de cada nodo.
- * 
+ *
  * @author Alejandro Hernández Mora <alejandrohmora@ciencias.unam.mx>
  */
-public abstract class NodoOperador implements CompositeEA{
+public abstract class NodoOperador implements CompositeEA {
 
-    /**
-     * Los hijos <code> izq</code> y <code>der</code>
-     * que cada operador podría tener.
-     */
     protected CompositeEA izq, der;
-
-    /**
-     * La precedencia en la jerarquía de operadores.
-     */
     protected int precedence;
-    
-    /**
-     * Constructor por omisión.
-     */
-    public NodoOperador(){
-        izq=null;
-        der=null;
+
+    public NodoOperador() {
+        this.izq = null;
+        this.der = null;
     }
 
-    /**
-     * Constructor que recibe parámetros.
-     * @param izq
-     * @param der
-     */
     public NodoOperador(CompositeEA izq, CompositeEA der) {
-        this.izq=izq;
-        this.der=der;
+        this.izq = izq;
+        this.der = der;
     }
-    
-    /**
-     * Constructor copia
-     * @param n
-     */
-    public NodoOperador(NodoOperador n){
-        izq=n.izq;
-        der=n.der;
+
+    public void setIzq(CompositeEA izq) {
+        this.izq = izq;
     }
-    
-    /**
-     * 
-     * @param izq
-     */
-    public void setIzq(CompositeEA izq){
-        this.izq=izq;
+
+    public void setDer(CompositeEA der) {
+        this.der = der;
     }
-    
-    /**
-     *
-     * @param der
-     */
-    public void setDer(CompositeEA der){
-        this.der=der;
-    }
-    
-    /**
-     *
-     * @return
-     */
-    public int getPrecedence(){
+
+    public int getPrecedence() {
         return precedence;
     }
-    
-    /**
-     * Método que se encarga de la represencación en una cadena de los nodos.
-     * Este método se implementa en esta clase abstracta para evitar repetir el
-     * código en las clases concretas.
-     * @return 
-     */
+
     @Override
     public String toString() {
         String operador = this instanceof NodoSuma ? " + "
-                        : this instanceof NodoResta ? " - "
-                        : this instanceof NodoMultiplicacion ? " * " : " / ";
+                : this instanceof NodoResta ? " - "
+                : this instanceof NodoMultiplicacion ? " * "
+                : this instanceof NodoDivision ? " / "
+                : this instanceof NodoRaizCuadrada ? " sqrt "
+                : this instanceof NodoSeno ? " sin "
+                : this instanceof NodoCoseno ? " cos "
+                : this instanceof NodoTangente ? " tan "
+                : this instanceof NodoNegativo ? " -" : "";
 
         if (izq != null) {
             return "(" + izq + operador + der + ")";
+        } else if (this instanceof NodoNegativo || this instanceof NodoRaizCuadrada ||
+                this instanceof NodoSeno || this instanceof NodoCoseno ||
+                this instanceof NodoTangente) {
+            return "(" + operador + der + ")";
         }
-        return  "("+ operador + der + ")";
+        return "";
+    }
 
-    }
-    
-    /**
-     * Método estático que genera una instancia de {@link NodoOperador}, dependiendo
-     * de el operando que representa.
-     * @param s El token con el operador.
-     * @param anteriorEsOperador Nos dice si el token anterior también fue operador
-     * (es necesario para el caso en el que la resta opera como operador unario).
-     * @return Un nodo concreto, dependiendo del operador <code>s</code>
-     * @throws ErrorDeSintaxisException En caso de recibir caracteres extraños.
-     */
-    public static NodoOperador factoryMethodOperadorNuevo(String s,
-            boolean anteriorEsOperador) throws ErrorDeSintaxisException{
+    public static NodoOperador factoryMethodOperadorNuevo(String s, boolean anteriorEsOperador) throws ErrorDeSintaxisException {
+        System.out.println("Creando operador para token: '" + s + "'");
+
         switch (s) {
-                case "+":
-                    return new NodoSuma(null,null);
-                case "-":
-                    NodoOperador o = new NodoResta(null,null);
-                    o.precedence=anteriorEsOperador? 3:0;
-                    return o;
-                case "*":
-                    return new NodoMultiplicacion(null,null);
-                case "/":
-                    return new NodoDivision(null,null);
-                case "(":
-                    return new NodoParentesis();
-                default:
-                    throw new ErrorDeSintaxisException("Error de Sintáxis");
-            }
+            case "sqrt":
+            case "sin":
+            case "cos":
+            case "tan":
+                NodoOperador operador = createUnaryOperator(s);
+                operador.precedence = 3;
+                return operador;
+            case "+":
+                return new NodoSuma(null, null);
+            case "-":
+                if (anteriorEsOperador) {
+                    return new NodoNegativo();
+                } else {
+                    return new NodoResta(null, null);
+                }
+            case "*":
+                return new NodoMultiplicacion(null, null);
+            case "/":
+                return new NodoDivision(null, null);
+            case "(":
+                return new NodoParentesis();
+            default:
+                throw new ErrorDeSintaxisException("Operador desconocido: " + s);
+        }
     }
-    
+
+    private static NodoOperador createUnaryOperator(String s) {
+        switch (s) {
+            case "sqrt": return new NodoRaizCuadrada();
+            case "sin": return new NodoSeno();
+            case "cos": return new NodoCoseno();
+            case "tan": return new NodoTangente();
+            default: throw new IllegalArgumentException("Operador unario desconocido: " + s);
+        }
+    }
 }
