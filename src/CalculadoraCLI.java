@@ -36,25 +36,27 @@ public class CalculadoraCLI extends JFrame {
         textField = new JTextField();
         getContentPane().add(textField, BorderLayout.NORTH);
         textField.setColumns(10);
+        textField.setFont(new Font("SansSerif", Font.BOLD, 20)); // Fuente más grande
+        textField.setHorizontalAlignment(JTextField.RIGHT);
 
         // Agrega botones a la interfaz
         addButton(panel, "7");
         addButton(panel, "8");
         addButton(panel, "9");
-        addButton(panel, "/");
+        addButton(panel, "+");
 
         addButton(panel, "4");
         addButton(panel, "5");
         addButton(panel, "6");
-        addButton(panel, "*");
+        addButton(panel, "-");
 
         addButton(panel, "1");
         addButton(panel, "2");
         addButton(panel, "3");
-        addButton(panel, "-");
+        addButton(panel, "*");
 
         addButton(panel, "0");
-        addButton(panel, ".");
+        addButton(panel, "/");
         addButton(panel, "(");
         addButton(panel, ")");
 
@@ -64,9 +66,8 @@ public class CalculadoraCLI extends JFrame {
         addButton(panel, "tan", "tan");
         addButton(panel, "√", "√");
 
-        addButton(panel, "+");
+        addButton(panel, ".");
         addButton(panel, "C", e -> textField.setText(""));
-        addButton(panel, "CE", e -> textField.setText(textField.getText().substring(0, textField.getText().length() - 1)));
         addButton(panel, "=", e -> calcular());
 
         // Botón de salida
