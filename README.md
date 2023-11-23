@@ -1,6 +1,9 @@
 Alumnos: 
 - Garcia Gomez Eduardo Biali
+eduardobgg20@ciencias.unam.mx
+
 - Hurtado Aponte Joshua Abel
+joshuahurtado@ciencias.unam.mx
 
 
 ### Nuevas Clases de Nodos para Operadores Especiales
