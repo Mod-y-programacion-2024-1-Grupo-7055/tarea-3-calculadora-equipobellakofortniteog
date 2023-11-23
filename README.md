@@ -30,7 +30,8 @@ Alumnos:
 - **Soporte para Nuevos Operadores**: Modificamos estas clases para manejar correctamente la representación, evaluación y precedencia de los nuevos operadores matemáticos.
 
 
-##Compilar y probar el codigo
+## Compilar y probar el codigo
+
 Se empieza descargando el codigo de nuestro repositorio de GitHub " tarea-3-calculadora-equipobellakofortniteog ", copiamos el link de este mismo y nos dirigimos a la terminal, nos dirigimos a donde queremos que se descargue la carpeta de la tarea, en este caso al escritorio, usando los comandos **- cd Escritorio/**
 
 Posteriormente usamos el comando para clonar el repositorio del Github con " git clone " mas el link que acabamos de copiar del repositorio
