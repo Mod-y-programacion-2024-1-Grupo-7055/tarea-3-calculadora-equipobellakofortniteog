@@ -1,13 +1,53 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/mWHhzJDI)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=12806470&assignment_repo_type=AssignmentRepo)
-# Tarea-3-Calculadora
-Este repositorio contiene el código base para la tarea 3.
+Alumnos: 
+- Garcia Gomez Eduardo Biali
+- Hurtado Aponte Joshua Abel
 
-{-//Elimina estas líneas de código en tu commit final
-La entrega de esta tarea es en equpos de a lo más dos integrantes.
+## Contribuciones Conjuntas
 
-Modifica este archivo para que cumpla los lineamientos de entraga de tareas del curso.
+### Nuevas Clases de Nodos para Operadores Especiales
 
-Asegurate de que este documento especifique los cambios al repositorio. Es decir qué archivos agregaste y cuáles modificaste.
-//Elimina estas lineas de código en tu commit final
--}
+- **NodoSeno.java**: Hemos implementado el operador seno para ampliar las capacidades matemáticas de nuestra calculadora, permitiendo realizar operaciones trigonométricas.
+- **NodoCoseno.java**: Similar al NodoSeno, pero para el cálculo del coseno.
+- **NodoTangente.java**: Añadimos soporte para el operador tangente.
+- **NodoRaizCuadrada.java**: Introdujimos la funcionalidad de cálculo de raíz cuadrada.
+
+### Modificaciones en Clase Compilador
+
+- **Análisis Léxico y Sintáctico Mejorado**: Actualizamos el compilador para reconocer y procesar los nuevos operadores. Esto implicó ajustes en la tokenización y en la construcción del árbol de análisis sintáctico.
+- **Simplificación de la Lógica de Precedencia**: Modificamos el método `casoOperador` para usar una lógica más clara y concisa en la comparación de precedencia de operadores.
+
+## Transformación de la Interfaz de Usuario
+
+- **De CLI a GUI**: Cambiamos el enfoque de una interfaz de línea de comandos a una interfaz gráfica de usuario. Esto implicó una reestructuración completa de cómo los usuarios interactúan con la aplicación.
+- **Diseño de la Interfaz Gráfica**: Implementamos una interfaz gráfica utilizando Swing, con botones para dígitos, operadores estándar y especiales, y funciones adicionales como borrar y salir.
+
+## Mejoras en la Interactividad y UX
+
+- **Botones con Etiquetas Personalizadas**: Añadimos botones con etiquetas completas para operadores especiales "sin, cos, tan y √ "que insertan sus respectivos símbolos cortos en el campo de texto. Esto mejora la claridad sin afectar la funcionalidad interna.
+- **Manejo de Errores y Validaciones**: Implementamos un sistema de manejo de errores para alertar al usuario sobre errores de sintaxis o cálculos inválidos.
+
+Ajustes en NodoOperador y Clases Relacionadas
+
+- **Soporte para Nuevos Operadores**: Modificamos estas clases para manejar correctamente la representación, evaluación y precedencia de los nuevos operadores matemáticos.
+
+
+##Compilar y probar el codigo
+Se empieza descargando el codigo de nuestro repositorio de GitHub " tarea-3-calculadora-equipobellakofortniteog ", copiamos el link de este mismo y nos dirigimos a la terminal, nos dirigimos a donde queremos que se descargue la carpeta de la tarea, en este caso al escritorio, usando los comandos **- cd Escritorio/**
+Posteriormente usamos el comando para clonar el repositorio del Github con " git clone " mas el link que acabamos de copiar del repositorio
+** - git clone https://github.com/Mod-y-programacion-2024-1-Grupo-7055/tarea-3-calculadora-equipobellakofortniteog.git **
+Ya con la practica en nuestro escritorio procedemos a abrir la carpeta y compilarlo con los comandos
+** - cd tarea-3-calculadora-equipobellakofortniteog/ ** *abrir la carpeta del codigo
+Despues para buscar la clase Main, primero nos debemos de meter al src que es donde se encuentra la clase Main para poder correr el programa, usando el comando:
+** - ls ** *para ver los archivos de la carpeta de la tarea
+y al ubicar la carpeta src usando el comando ** cd src/ **
+ahora buscamos el archivo que es el Main de nuestra Tarea que se llama "CalculadoraCLI" usando el comando "** ls **"
+al ubicar el archivo compilamos con el siguiente comando:
+** javac CalculadoraCLI.java **
+despues para correr el programa ponemos el comando:
+** java CalculadoraCLI ** 
+
+
+
+
+
+
