@@ -39,6 +39,7 @@ public class CalculadoraCLI extends JFrame {
         textField.setFont(new Font("SansSerif", Font.BOLD, 20)); // Fuente más grande
         textField.setHorizontalAlignment(JTextField.RIGHT);
 
+
         // Agrega botones a la interfaz
         addButton(panel, "7");
         addButton(panel, "8");
