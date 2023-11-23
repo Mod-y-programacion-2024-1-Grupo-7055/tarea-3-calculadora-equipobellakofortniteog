@@ -9,12 +9,16 @@
  *
  * @author Alejandro Hernández Mora <alejandrohmora@ciencias.unam.mx>
  */
+/**
+ * Clase que representa el nodo de la operación división en una expresión aritmética.
+ * Este nodo es una extensión de NodoOperador y forma parte del patrón de diseño Composite,
+ */
 public class NodoDivision extends NodoOperador {
-
     /**
-     *
-     * @param izq
-     * @param der
+     * Constructor para crear un nodo de la operación división.
+     * Inicia el nodo con los operandos izquierdo y derecho.
+     * @param izq El nodo izquierdo que representa el dividendo de la división.
+     * @param der El nodo derecho que representa el divisor de la división.
      */
     public NodoDivision(CompositeEA izq, CompositeEA der) {
         super(izq, der);
@@ -22,10 +26,11 @@ public class NodoDivision extends NodoOperador {
     }
 
     /**
-     * La evaluación del nodo, divide la evaluación de los hijos izquierdo y
-     * derecho.
-     *
-     * @return la división del hijo izquierdo entre el hijo derecho.
+     * Evalúa la operación división del nodo.
+     * Divide el valor evaluado del nodo izquierdo por el valor evaluado del nodo derecho.
+     * Si el divisor es cero, lanza una excepción
+     * @return El resultado de dividir.
+     * @throws ArithmeticException Si el divisor (valor del nodo derecho) es cero.
      */
     @Override
     public double evalua() {
@@ -35,4 +40,4 @@ public class NodoDivision extends NodoOperador {
         }
         return izq.evalua() / d;
     }
-}
+}//fin de la clase NodoDivisión

@@ -9,12 +9,17 @@
  *
  * @author Alejandro Hernández Mora <alejandrohmora@ciencias.unam.mx>
  */
+/**
+ * Clase que representa el nodo de la operación multiplicación en una expresión aritmética.
+ * Este nodo es una extensión de NodoOperador y forma parte del patrón de diseño Composite,
+ */
 public class NodoMultiplicacion extends NodoOperador {
 
     /**
-     *
-     * @param izq
-     * @param der
+     * Constructor para crear un nodo de la operación multiplicación.
+     * Inicia el nodo con los operandos izquierdo y derecho.
+     * @param izq El nodo izquierdo que representa el primer operando de la multiplicación.
+     * @param der El nodo derecho que representa el segundo operando de la multiplicación.
      */
     public NodoMultiplicacion(CompositeEA izq, CompositeEA der) {
         super(izq, der);
@@ -22,12 +27,13 @@ public class NodoMultiplicacion extends NodoOperador {
     }
 
     /**
-     *
-     * @return
+     * Evalúa la operación multiplicación del nodo.
+     * Multiplica los valores evaluados de los nodos izquierdo y derecho.
+     * @return El resultado de multiplicar.
      */
     @Override
     public double evalua() {
         return izq.evalua() * der.evalua();
     }
 
-}
+}//fin de la clase NodoMultiplicación

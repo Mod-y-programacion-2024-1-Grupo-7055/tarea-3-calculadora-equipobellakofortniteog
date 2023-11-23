@@ -16,18 +16,15 @@
 public interface CompositeEA {
 
     /**
-     *
-     * @return
+     * Evalúa el nodo actual en el árbol de análisis sintáctico.
+     * @return El valor numérico resultante de evaluar el nodo.
      */
     public double evalua();
 
     /**
-     *
-     * @return
+     * Proporciona una representación en forma de cadena del nodo.
+     * @return Una representación en cadena del nodo.
      */
     @Override
     public String toString();
-
-    
-
-}
+}//fin de la interfaz CompositeEA

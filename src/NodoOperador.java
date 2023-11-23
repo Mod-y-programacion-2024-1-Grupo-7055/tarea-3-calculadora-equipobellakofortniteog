@@ -9,8 +9,7 @@
 public abstract class NodoOperador implements CompositeEA{
 
     /**
-     * Los hijos <code> izq</code> y <code>der</code>
-     * que cada operador podría tener.
+     * Los hijos izquierdo (izq) y derecho (der) que cada operador podría tener.
      */
     protected CompositeEA izq, der;
 
@@ -28,9 +27,10 @@ public abstract class NodoOperador implements CompositeEA{
     }
 
     /**
-     * Constructor que recibe parámetros.
-     * @param izq
-     * @param der
+     * Constructor que recibe nodos hijos izquierdo y derecho.
+     * @param izq El nodo hijo izquierdo.
+     * @param der El nodo hijo derecho.
+     *
      */
     public NodoOperador(CompositeEA izq, CompositeEA der) {
         this.izq=izq;
@@ -39,7 +39,7 @@ public abstract class NodoOperador implements CompositeEA{
     
     /**
      * Constructor copia
-     * @param n
+     * @param n El NodoOperador a copiar.
      */
     public NodoOperador(NodoOperador n){
         izq=n.izq;
@@ -47,7 +47,7 @@ public abstract class NodoOperador implements CompositeEA{
     }
     
     /**
-     * 
+     * Establece el nodo hijo izquierdo.
      * @param izq
      */
     public void setIzq(CompositeEA izq){
@@ -55,16 +55,16 @@ public abstract class NodoOperador implements CompositeEA{
     }
     
     /**
-     *
+     * Establece el nodo hijo derecho
      * @param der
      */
     public void setDer(CompositeEA der){
         this.der=der;
     }
-    
+
     /**
-     *
-     * @return
+     * Obtiene la precedencia del operador.
+     * @return La precedencia del operador.
      */
     public int getPrecedence(){
         return precedence;
@@ -74,7 +74,7 @@ public abstract class NodoOperador implements CompositeEA{
      * Método que se encarga de la represencación en una cadena de los nodos.
      * Este método se implementa en esta clase abstracta para evitar repetir el
      * código en las clases concretas.
-     * @return 
+     * @return Una representación en cadena del nodo operador y sus hijos.
      */
     @Override
     public String toString() {
@@ -91,7 +91,7 @@ public abstract class NodoOperador implements CompositeEA{
     
     /**
      * Método estático que genera una instancia de {@link NodoOperador}, dependiendo
-     * de el operando que representa.
+     * del operando que representa.
      * @param s El token con el operador.
      * @param anteriorEsOperador Nos dice si el token anterior también fue operador
      * (es necesario para el caso en el que la resta opera como operador unario).
@@ -126,4 +126,4 @@ public abstract class NodoOperador implements CompositeEA{
             }
     }
     
-}
+}//fin de la clase NodoOperador

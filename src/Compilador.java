@@ -85,6 +85,13 @@ public class Compilador {
         return salida.pop();
     }
 
+    /**
+     * Maneja el caso de encontrar un operador en la expresión durante la construcción del árbol.
+     * @param operadores La pila de operadores encontrados hasta el momento.
+     * @param salida La pila que representa la construcción actual del árbol.
+     * @param no El nodo operador actual a procesar.
+     * @throws ErrorDeSintaxisException Si se encuentra un error de sintaxis durante el procesamiento.
+     */
     private void casoOperador(Stack<NodoOperador> operadores,
             Stack<CompositeEA> salida, NodoOperador no) throws ErrorDeSintaxisException {
         while (!operadores.empty()) {
@@ -100,6 +107,12 @@ public class Compilador {
         operadores.push(no);
     }
 
+    /**
+     * Inserta un operador en la pila de salida, estableciendo sus operandos izquierdo y derecho.
+     * @param op El operador a insertar en la pila de salida.
+     * @param salida La pila que representa la construcción actual del árbol.
+     * @throws ErrorDeSintaxisException Si falta un operando necesario para el operador.
+     */
     private void popIntoOutput(NodoOperador op, Stack<CompositeEA> salida) throws ErrorDeSintaxisException {
         try {
             CompositeEA der = salida.pop();
@@ -115,6 +128,12 @@ public class Compilador {
         }
     }
 
+    /**
+     * Maneja el caso de encontrar un paréntesis derecho en la expresión durante la construcción del árbol.
+     * @param operadores La pila de operadores encontrados hasta el momento.
+     * @param salida La pila que representa la construcción actual del árbol.
+     * @throws ErrorDeSintaxisException Si hay un desequilibrio en los paréntesis de la expresión.
+     */
     private void casoParentesisDerecho(Stack<NodoOperador> operadores,
             Stack<CompositeEA> salida) throws ErrorDeSintaxisException {
         while (!operadores.empty()) {

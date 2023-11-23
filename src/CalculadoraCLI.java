@@ -3,15 +3,27 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.StringTokenizer;
 
+/**
+ * Clase que implementa una interfaz gráfica para una calculadora.
+ * Hereda de JFrame para crear una ventana de aplicación.
+ */
 public class CalculadoraCLI extends JFrame {
     private JTextField textField;
     private Compilador compilador;
 
+    /**
+     * Constructor de la clase CalculadoraCLI.
+     * Inicializa el compilador y la interfaz gráfica.
+     */
     public CalculadoraCLI() {
         compilador = new Compilador();
         initialize();
     }
 
+    /**
+     * Inicializa la interfaz gráfica de la calculadora.
+     * Configura el layout, los botones y el campo de texto.
+     */
     private void initialize() {
         setTitle("Calculadora");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,7 +37,7 @@ public class CalculadoraCLI extends JFrame {
         getContentPane().add(textField, BorderLayout.NORTH);
         textField.setColumns(10);
 
-        // Agregando botones
+        // Agrega botones a la interfaz
         addButton(panel, "7");
         addButton(panel, "8");
         addButton(panel, "9");
@@ -63,22 +75,40 @@ public class CalculadoraCLI extends JFrame {
         pack();
     }
 
+    /**
+     * Añade un botón al panel con un texto.
+     * @param panel Panel donde se añadirá el botón.
+     * @param text Texto del botón.
+     */
     private void addButton(JPanel panel, String text) {
         addButton(panel, text, e -> textField.setText(textField.getText() + text));
     }
 
+    /**
+     * Añade un botón al panel con un texto y una acción específica.
+     * @param panel Panel donde se añadirá el botón.
+     * @param buttonText Texto del botón.
+     */
     private void addButton(JPanel panel, String buttonText, String textToAdd) {
         JButton button = new JButton(buttonText);
         button.addActionListener(e -> textField.setText(textField.getText() + textToAdd));
         panel.add(button);
     }
 
+    /**
+     * Añade un botón al panel con un texto y una acción específica.
+     * @param panel Panel donde se añadirá el botón.
+     * @param action Acción que realizará el botón.
+     */
     private void addButton(JPanel panel, String text, ActionListener action) {
         JButton button = new JButton(text);
         button.addActionListener(action);
         panel.add(button);
     }
 
+    /**
+     * Procesa la expresión ingresada en el campo de texto y muestra el resultado.
+     */
     private void calcular() {
         try {
             StringTokenizer tokenizer = compilador.analisisLexico(textField.getText());
@@ -89,6 +119,10 @@ public class CalculadoraCLI extends JFrame {
         }
     }
 
+    /**
+     * Punto de entrada principal para la aplicación.
+     * @param args (No usado)
+     */
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {
@@ -99,5 +133,5 @@ public class CalculadoraCLI extends JFrame {
             }
         });
     }
-}
+}//fin de la clase Calculadora
 
