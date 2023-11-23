@@ -2,7 +2,6 @@ Alumnos:
 - Garcia Gomez Eduardo Biali
 - Hurtado Aponte Joshua Abel
 
-## Contribuciones Conjuntas
 
 ### Nuevas Clases de Nodos para Operadores Especiales
 
